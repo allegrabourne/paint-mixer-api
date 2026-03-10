@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PaintMixer.Api\PaintMixer.Api.csproj" />
     <ProjectReference Include="..\PaintMixer.Domain\PaintMixer.Domain.csproj" />
     <ProjectReference Include="..\PaintMixer.Service\PaintMixer.Service.csproj" />
   </ItemGroup>
