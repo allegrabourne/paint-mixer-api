@@ -7,17 +7,28 @@ namespace PaintMixer.Service
     /// <summary>
     /// Internal adapter class that allows the PaintMixerService to interact with the PaintMixerDeviceEmulator
     /// </summary>
-    internal sealed class PaintMixerDeviceAdapter(PaintMixerEmulator.PaintMixerDeviceEmulator emulator) : IPaintMixerDevice
+    public sealed class PaintMixerDeviceAdapter : IPaintMixerDevice
     {
-        private readonly PaintMixerDeviceEmulator _emulator = emulator ?? throw new ArgumentNullException(nameof(emulator));
+        private readonly PaintMixerDeviceEmulator _emulator;
 
-        public int SubmitJob(int red = 0, int black = 0, int white = 0, int yellow = 0, int blue = 0, int green = 0)
-            => _emulator.SubmitJob(red, black, white, yellow, blue, green);
+        public PaintMixerDeviceAdapter()
+        {
+            _emulator = new PaintMixerDeviceEmulator();
+        }
+
+        public int SubmitJob(int red, int black, int white, int yellow, int blue, int green)
+        {
+            return _emulator.SubmitJob(red, black, white, yellow, blue, green);
+        }
 
         public int CancelJob(int jobCode)
-            => _emulator.CancelJob(jobCode);
+        {
+            return _emulator.CancelJob(jobCode);
+        }
 
         public int QueryJobState(int jobCode)
-            => _emulator.QueryJobState(jobCode);
+        {
+            return _emulator.QueryJobState(jobCode);
+        }
     }
 }
