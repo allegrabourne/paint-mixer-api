@@ -16,7 +16,9 @@ namespace PaintMixer.Domain
             }
 
             Mix = mix ?? throw new ArgumentNullException(nameof(mix));
+
             Status = status;
+
             JobCode = jobCode;
         }
     }
