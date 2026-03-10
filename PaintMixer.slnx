@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="PaintMixer.Api/PaintMixer.Api.csproj" />
+  <Project Path="PaintMixer.Domain/PaintMixer.Domain.csproj" Id="ff3754a5-5b2a-4312-a67d-f608bfab38e6" />
+  <Project Path="PaintMixer.Service/PaintMixer.Service.csproj" Id="b6c51d1b-6b5b-4b94-90b1-3423da30a1a4" />
+  <Project Path="PaintMixer.Test/PaintMixer.Test.csproj" Id="4c9744ad-2350-405c-886a-3ff8cf950546" />
+</Solution>
