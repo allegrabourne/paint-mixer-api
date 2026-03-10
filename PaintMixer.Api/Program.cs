@@ -1,21 +1,21 @@
+using FastEndpoints;
 using PaintMixer.Api.Diagnostics;
 using PaintMixer.Api.Middleware;
-using System.Text.Json.Serialization;
+using PaintMixer.Service;
+using PaintMixer.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.ConfigureHttpJsonOptions(options =>
-{
-    options.SerializerOptions.PropertyNameCaseInsensitive = true;
-
-    options.SerializerOptions.Converters.Add(
-        new JsonStringEnumConverter());
-});
-
 builder.Services.AddSingleton<IDiagnosticMessageProvider, DiagnosticMessageProvider>();
+builder.Services.AddSingleton<IPaintMixerDevice, PaintMixerDeviceAdapter>();
+builder.Services.AddScoped<IPaintMixerService, PaintMixerService>();
+
+builder.Services.AddFastEndpoints();
 
 var app = builder.Build();
 
 app.UseMiddleware<Observability>();
+
+app.UseFastEndpoints();
 
 app.Run();

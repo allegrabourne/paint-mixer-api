@@ -52,7 +52,12 @@ namespace PaintMixer.Api.Middleware
                     CorrelationId = correlationId
                 };
 
-                await context.Response.WriteAsJsonAsync(response);
+                var json = System.Text.Json.JsonSerializer.Serialize(response, new System.Text.Json.JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
+                });
+
+                await context.Response.WriteAsync(json);
             }
         }
 
